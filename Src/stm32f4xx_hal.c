@@ -34,6 +34,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f4xx_hal.h"
+// #include "system_stm32f4xx.h"
 
 /** @addtogroup STM32F4xx_HAL_Driver
   * @{
@@ -253,7 +254,9 @@ __weak void HAL_MspDeInit(void)
 __weak HAL_StatusTypeDef HAL_InitTick(uint32_t TickPriority)
 {
   /* Configure the SysTick to have interrupt in 1ms time basis*/
-  if (HAL_SYSTICK_Config(SystemCoreClock / (1000U / uwTickFreq)) > 0U)
+	//SystemCoreClock
+  //SystemCoreClock = 800u;
+  if (HAL_SYSTICK_Config(8000000 / (1000U / uwTickFreq)) > 0U)
   {
     return HAL_ERROR;
   }
